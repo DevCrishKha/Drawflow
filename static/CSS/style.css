@@ -1,0 +1,70 @@
+         html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+
+        #app {
+            display: flex;
+            width: 100%;
+            height: 100%;
+        }
+
+        #palette {
+            width: 200px;
+            padding: 10px;
+            background: #eee;
+        }
+
+        .component {
+            padding: 10px;
+            margin-bottom: 8px;
+            background: white;
+            border: 1px solid #aaa;
+            cursor: grab;
+        }
+
+        #drawflow {
+            flex: 1;
+            height: 100%;
+            position: relative;
+        }
+
+        .port-controls {
+            display: flex;
+            gap: 4px;
+            margin-top: 6px;
+            justify-content: center;
+        }
+
+        .port-btn {
+            width: 40px;
+            height: 22px;
+            border: none;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            line-height: 1;
+            cursor: pointer;
+            color: white;
+            transition: transform 0.1s ease, opacity 0.15s ease;
+        }
+
+        .port-btn:hover {
+            opacity: 0.85;
+        }
+
+        .port-btn:active {
+            transform: scale(0.9);
+        }
+
+        .port-btn.add {
+            background: #10b981;
+            /* green = add */
+        }
+
+        .port-btn.remove {
+            background: #ef4444;
+            /* red = remove */
+        }

@@ -1,0 +1,19 @@
+<!-- In page.html -->
+<table>
+    <thead>
+        <tr>
+            <th>Variable</th>
+            <th>Type</th>
+            <th>Operation</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for key, value in my_dict.items() %}
+        <tr>
+            <td>{{ key }}</td>
+            <td>{{ value[0] }}</td>
+            <td>{{ value[1] }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
