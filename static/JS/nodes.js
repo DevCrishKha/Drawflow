@@ -15,12 +15,7 @@ html: `<div>
         <button class="port-btn remove" onclick="removeOutputPort(this)">-Out</button>
       </div>
       </br>
-      <div class="node-actions">
-        <button class="node-action-btn details" onclick="openDetails(this)">Details</button>
-        <button class="node-action-btn prompt" onclick="openPrompt(this)">Prompt</button>
-    </div>
-    </br>
-    <button onclick="fetch_table(this, 'variable')">ShowTable</button>
+      <button class="footer-button primary" id="open-node-window" onclick="show_node_window(this)" > Node Window </button>
 </div>
 `
 },

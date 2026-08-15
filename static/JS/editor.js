@@ -1,6 +1,4 @@
 import { nodes } from "./nodes.js";
-import { send_to_flask } from "./send_to_flask.js";
-import { editor } from "./create_node.js";
 
 const container = document.getElementById("drawflow");  // Take the workspace div id='drawflow'
 const editor = new Drawflow(container); // Create an editor class using the div as parameter
@@ -15,7 +13,7 @@ document.querySelectorAll(".component").forEach(component => {
 // Drag from palette
 
 component.addEventListener("dragstart", event => {
-const type = component.dataset.type; // Getting the data-type of a div with class components from the key-value pair
+const type = component.dataset.name; // Getting the data-type of a div with class components from the key-value pair
 console.log("DRAG START:", type); // To show logs in console
 
 // The dataTransfer and serData are browser's drag-and-drop data mechanism.
@@ -66,7 +64,7 @@ node.outputs,// no of output ports
 x, // position on the workspace
 y,
 type.toLowerCase().replaceAll(" ", "_"), // changing the type to lowercase and exchanging spaces with underscore
-{ type: type },
+{ type: type }, // This is the data inside the node
 node.html
 );
 
@@ -85,11 +83,33 @@ node.html
 
 });
 
+function save_drawflow_editor(){
+// send the json to flask
+const graph = editor.export();
 
-/*
+fetch("/save_drawflow_editor", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify(graph)
+});
+console.log("save_drawflow_editor: Executed")
+}
+window.save_drawflow_editor = save_drawflow_editor;
+
+
+/*====================================
       FUNCTION FOR EACH DRAWFLOW NODE
+      MOVE TO NODE.JS LATER ON
+======================================
 */
 
+window.addInputPort = addInputPort;
+window.removeInputPort = removeInputPort;
+window.addOutputPort = addOutputPort;
+window.removeOutputPort = removeOutputPort;
+window.show_node_window = show_node_window;
 // Every Drawflow node sits inside a div with id="node-<ID>"
 // This helper walks up from the clicked button to find that ID
 function getNodeId(button) {
@@ -124,4 +144,11 @@ function removeOutputPort(button) {
   if (count > 0) {
     editor.removeNodeOutput(id, `output_${count}`);
   }
+}
+
+function show_node_window(button){
+  const id = getNodeId(button);
+  document.getElementById("nodeId_on_nodeWindowTitle").innerHTML = id;
+  document.getElementById("node-window").style.display = "block";
+  // Later take the whole node data and show it in the Details field
 }

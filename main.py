@@ -10,7 +10,7 @@ def Home():
 def HomeJS():
     return render_template("jointJS.html")
 
-@app.post("/save_graph")
+@app.post("/save_drawflow_editor")
 def save_graph():
     graph = request.get_json()
 

@@ -1,0 +1,123 @@
+<!-- ================================THE CSS LINK IS ADDED IN INDEX.HTML=============================== -->
+<link rel="stylesheet" href="{{ url_for('static', filename='CSS/node_window.css') }}">
+<!-- ========================================================= NODE WINDOW ========================================================= -->
+<div id="node-window" class="hidden"> <!-- TITLE BAR -->
+    <div id="properties-titlebar">
+        <div id="properties-title"> ESP32 Properties </br> Node_Id: <span id="nodeId_on_nodeWindowTitle"></span>
+        </div>
+        <button class="window-button" id="minimize-properties">
+            −</button>
+        <button class="window-button close" id="close-properties"> × </button>
+    </div>
+    <!-- ===================================================== TABS ====================================================== -->
+    <div id="property-tabs"> <button class="property-tab active" data-page="general"> Node Details </button> <button
+            class="property-tab" data-page="appearance"> Appearance </button> <button class="property-tab"
+            data-page="behavior"> Behavior </button> <button class="property-tab" data-page="advanced"> Advanced
+        </button> <button class="property-tab" data-page="tables"> Variables Table </button> </div>
+    <!-- ===================================================== CONTENT ====================================================== -->
+    <div id="property-content">
+        <!-- ================================================= GENERAL ================================================== -->
+        <div class="property-page active" id="page-general">
+            <div class="property-section">
+                <div class="property-section-title"> Basic Information </div>
+                <div class="property-row"> <label class="property-label"> Name </label> <input id="property-name"
+                        class="property-input" type="text" value="ESP32 Controller"> </div>
+                <div class="property-row"> <label class="property-label"> Type </label> <select id="property-type"
+                        class="property-select">
+                        <option>ESP32</option>
+                        <option>Arduino</option>
+                        <option>Raspberry Pi</option>
+                        <option>Sensor</option>
+                        <option>Actuator</option>
+                    </select> </div>
+                <div class="property-row"> <label class="property-label"> ID </label> <input id="property-id"
+                        class="property-input" type="text" value="ESP32_001"> </div>
+                <div class="property-row"> <label class="property-label"> Enabled </label> <label class="toggle"> <input
+                            id="property-enabled" type="checkbox" checked> <span class="toggle-slider"></span> </label>
+                </div>
+            </div>
+            <div class="property-section">
+                <div class="property-section-title"> Description </div> <textarea id="property-description"
+                    class="property-textarea">Main ESP32 controller for the project.</textarea>
+            </div>
+        </div>
+        <!-- ================================================= APPEARANCE ================================================== -->
+        <div class="property-page" id="page-appearance">
+            <div class="property-section">
+                <div class="property-section-title"> Appearance </div>
+                <div class="property-row"> <label class="property-label"> Shape </label> <select id="appearance-shape"
+                        class="property-select">
+                        <option>Rectangle</option>
+                        <option>Rounded Rectangle</option>
+                        <option>Circle</option>
+                        <option>Custom</option>
+                    </select> </div>
+                <div class="property-row"> <label class="property-label"> Width </label> <input id="appearance-width"
+                        class="property-input" type="number" value="150"> </div>
+                <div class="property-row"> <label class="property-label"> Height </label> <input id="appearance-height"
+                        class="property-input" type="number" value="80"> </div>
+                <div class="property-row"> <label class="property-label"> Border Width </label> <input
+                        class="property-input" type="number" value="1"> </div>
+            </div>
+        </div>
+        <!-- ================================================= BEHAVIOR ================================================== -->
+        <div class="property-page" id="page-behavior">
+            <div class="property-section">
+                <div class="property-section-title"> Component Behavior </div>
+                <div class="property-row"> <label class="property-label"> Draggable </label> <label class="toggle">
+                        <input type="checkbox" checked> <span class="toggle-slider"></span> </label> </div>
+                <div class="property-row"> <label class="property-label"> Resizable </label> <label class="toggle">
+                        <input type="checkbox" checked> <span class="toggle-slider"></span> </label> </div>
+                <div class="property-row"> <label class="property-label"> Auto Connect </label> <label class="toggle">
+                        <input type="checkbox"> <span class="toggle-slider"></span> </label> </div>
+                <div class="property-row"> <label class="property-label"> Lock Position </label> <label class="toggle">
+                        <input type="checkbox"> <span class="toggle-slider"></span> </label> </div>
+            </div>
+        </div>
+        <!-- ================================================= ADVANCED ================================================== -->
+        <div class="property-page" id="page-advanced">
+            <div class="property-section">
+                <div class="property-section-title"> Advanced Settings </div>
+                <div class="property-row"> <label class="property-label"> Z-Index </label> <input class="property-input"
+                        type="number" value="10"> </div>
+                <div class="property-row"> <label class="property-label"> Update Interval </label> <input
+                        class="property-input" type="number" value="100"> </div>
+                <div class="property-row"> <label class="property-label"> Mode </label> <select class="property-select">
+                        <option>Normal</option>
+                        <option>Debug</option>
+                        <option>Simulation</option>
+                        <option>Production</option>
+                    </select> </div>
+                <div class="property-row"> <label class="property-label"> Custom ID </label> <input
+                        class="property-input" type="text" placeholder="Enter custom ID"> </div>
+            </div>
+        </div>
+        <!-- ================================================= TABLES ================================================== -->
+        <div class="property-page" id="page-tables">
+            <div class="property-section-title"> Component Data </div>
+            <div class="table-container">
+                <table id="properties-table">
+                    <thead>
+                        <tr>
+                            <th>Key</th>
+                            <th>Type</th>
+                            <th>Value</th>
+                            <th>Min</th>
+                            <th>Max</th>
+                            <th>Unit</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="properties-table-body"> </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- ===================================================== FOOTER ====================================================== -->
+    <div id="property-footer"> <button class="footer-button" id="cancel-properties"> Cancel </button> <button
+            class="footer-button" id="apply-properties"> Apply </button> <button class="footer-button primary"
+            id="save-properties"> Save </button> </div>
+</div>
+
+
+<script src="{{ url_for('static', filename='JS/node_window_show.js') }}"></script>
