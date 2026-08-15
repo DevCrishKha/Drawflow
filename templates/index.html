@@ -4,7 +4,7 @@
 <head>
     <title>Drawflow Test</title>
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jerosoler/Drawflow/dist/drawflow.min.css">
+    <link rel="stylesheet" href="{{ url_for('static',filename='CSS/drawflow.min.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/style.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='CSS/navbar.css') }}">
 
@@ -28,10 +28,6 @@
         <div class="component" draggable="true" data-type="Frontend">Frontend</div>
         <div class="component" draggable="true" data-type="Database">Database</div>
     </div> -->`
-    <div class="modal-header">
-        <h2 id="modal-node-title">Node Details</h2>
-        <button id="modal-close" class="modal-close-btn">&times;</button>
-    </div>
 
     <!-- <div id="drawflow"></div> -->
 

@@ -3,6 +3,10 @@ import { nodes } from "./nodes.js";
 const container = document.getElementById("drawflow");  // Take the workspace div id='drawflow'
 const editor = new Drawflow(container); // Create an editor class using the div as parameter
 
+editor.zoom_min = 0.01;   // allow zoom down to 10%
+editor.zoom_max = 2;     // optional
+editor.zoom_value = 0.08; // zoom step
+
 editor.start(); // .start() method is used to start the event handeler of an object (if you defined any event in the object's class) 
 
 // querySelector() selects a child inside the element with the class ''
